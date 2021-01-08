@@ -1,0 +1,25 @@
+#user-info {
+    .container {
+        border-radius: 5px;
+        background-color: $white;
+        margin-top: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        box-shadow: 5px 10px 10px #00000032;
+        
+        #panel, #flip {
+            padding: 5px;
+            text-align: center;
+            background-color: $white;
+            
+        }
+        
+        #panel {
+            padding: 50px;
+            display: none;
+        }
+        
+    }
+
+    
+} 
