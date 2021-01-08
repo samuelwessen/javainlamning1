@@ -7,16 +7,31 @@
         padding-bottom: 1rem;
         box-shadow: 5px 10px 10px #00000032;
         
-        #panel, #flip {
-            padding: 5px;
+        #flip {
             text-align: center;
+            font-weight: bold;
+        }
+
+        #panel {
+            padding: 5px;            
             background-color: $white;
+
+            #panel-info {
+                @include md {
+                    display: flex;
+                }
+            }
             
+            label {
+                font-weight: bolder;
+                margin-right: 1rem;
+            }
         }
         
         #panel {
             padding: 50px;
             display: none;
+            
         }
         
     }

@@ -1,8 +1,8 @@
 export default class User {
-    constructor(firstname, lastname, address, city, postalcode, email) {
+    constructor(firstname, lastname, adress, city, postalcode, email) {
         this.firstName = firstname
         this.lastName = lastname
-        this.address = address
+        this.adress = adress
         this.city = city
         this.postalcode = postalcode
         this.email = email
