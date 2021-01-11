@@ -102,17 +102,17 @@ const addUser = (e) => {
     userCity.textContent = user.city;
     let userPostalCode = document.querySelector('#userPostalCode')
     userPostalCode.textContent = user.postalcode;
+
+    //stänger av knappen när man trycker på knappen
+    document.getElementById('create_btn').disabled = true;
 }
 
 
 
 // Event Submit
 document.addEventListener('DOMContentLoaded', ()=>{
-    document.getElementById('create_btn').addEventListener('click', addUser);
+    document.getElementById('create_btn').addEventListener('click', addUser);    
   });
-
-
-
 
 
 // validerar all inputs
