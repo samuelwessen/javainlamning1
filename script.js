@@ -9,16 +9,40 @@ $(document).ready(function() {
         let email = $("#email").val();
         let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
         if (!filter.test(email)) {
-            document.getElementById('create_btn').disabled = true
-          //alert('Please provide a valid email address');
+            // document.getElementById('create_btn').disabled = true          
           $("#email-error").text(email+" är inte en giltig email");
           email.focus;
           //return false;
        } else {
            $("#email-error").text("");
-           document.getElementById('create_btn').disabled = false
+        //    document.getElementById('create_btn').disabled = false
        }
     });
+
+
+    //Funkar me allt förutom email
+    $(document).ready(function () {
+        validate();
+        $('#firstName, #lastName, #adress, #city, #postalCode, #email' ).keyup(validate);
+    });
+
+    function validate() {
+        if ($('#firstName').val().length > 1 &&
+            $('#lastName').val().length > 1 &&
+            $('#adress').val().length > 1 &&
+            $('#city').val().length > 1 &&
+            $('#postalCode').val().length == 5 &&
+            $('#email').val().length > 5 ) {
+                $('#create_btn').prop("disabled", false);
+            }
+        else {
+            $('#create_btn').prop("disabled", true);
+        }
+    }
+
+
+
+
 })
 
 // import User from "./user.js
@@ -94,11 +118,11 @@ for (let input of inputs) {
     input.addEventListener('keyup', (e) => {
         if(e.target.value.length < 2) {
             document.getElementById(`${e.target.id}-error`).innerText = 'För få tecken '
-            document.getElementById('create_btn').disabled = true
+            // document.getElementById('create_btn').disabled = true
             }
         else {
         document.getElementById(`${e.target.id}-error`).innerText = ''
-        document.getElementById('create_btn').disabled = false
+        // document.getElementById('create_btn').disabled = false
         }
     })
 }
@@ -107,12 +131,13 @@ for (let input of inputs) {
 document.getElementById('postalCode').addEventListener('keyup', (e) => {
     if(e.target.value.length !== 5) {
         document.getElementById(`${e.target.id}-error`).innerText = 'Ange ett giltigt postnr'
-        document.getElementById('create_btn').disabled = true
+        // document.getElementById('create_btn').disabled = true
     }
     else {
         document.getElementById(`${e.target.id}-error`).innerText = ''
-        document.getElementById('create_btn').disabled = false
+        // document.getElementById('create_btn').disabled = false
     }
 })
+
 
 
