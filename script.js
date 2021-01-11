@@ -27,12 +27,16 @@ $(document).ready(function() {
     });
 
     function validate() {
+
+        let email = $("#email").val();
+        let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
         if ($('#firstName').val().length > 1 &&
             $('#lastName').val().length > 1 &&
             $('#adress').val().length > 1 &&
             $('#city').val().length > 1 &&
             $('#postalCode').val().length == 5 &&
-            $('#email').val().length > 5 ) {
+            (filter.test(email))) {
                 $('#create_btn').prop("disabled", false);
             }
         else {
