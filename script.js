@@ -23,7 +23,7 @@ $(document).ready(function() {
     //Funkar me allt förutom email
     $(document).ready(function () {
         validate();
-        $('#firstName, #lastName, #adress, #city, #postalCode, #email' ).keyup(validate);
+        $('#firstName, #lastName, #adress, #city, #postalCode, #phoneNumber, #email' ).keyup(validate);
     });
 
     function validate() {
@@ -36,6 +36,7 @@ $(document).ready(function() {
             $('#adress').val().length > 1 &&
             $('#city').val().length > 1 &&
             $('#postalCode').val().length == 5 &&
+            $('#phoneNumber').val().length == 10 &&
             (filter.test(email))) {
                 $('#create_btn').prop("disabled", false);
             }
@@ -69,6 +70,7 @@ const addUser = (e) => {
         city: document.getElementById('city').value,
         postalcode: document.getElementById('postalCode').value,
         email: document.getElementById('email').value,
+        phoneNumber: document.getElementById('phoneNumber').value,
     }
 
     users.push(user);
@@ -96,6 +98,8 @@ const addUser = (e) => {
     userLastName.textContent = user.lastName;
     let userEmail = document.querySelector('#userEmail')
     userEmail.textContent = user.email;
+    let userPhoneNumber = document.querySelector('#userPhoneNumber')
+    userPhoneNumber.textContent = user.phoneNumber;
     let userAdress = document.querySelector('#userAdress')
     userAdress.textContent = user.adress;
     let userCity = document.querySelector('#userCity')
@@ -103,7 +107,7 @@ const addUser = (e) => {
     let userPostalCode = document.querySelector('#userPostalCode')
     userPostalCode.textContent = user.postalcode;
 
-    //stänger av knappen när man trycker på knappen
+    //gör så att knappen är disabled när man har tryckt på den
     document.getElementById('create_btn').disabled = true;
 }
 
@@ -135,6 +139,18 @@ for (let input of inputs) {
 document.getElementById('postalCode').addEventListener('keyup', (e) => {
     if(e.target.value.length !== 5) {
         document.getElementById(`${e.target.id}-error`).innerText = 'Ange ett giltigt postnr'
+        // document.getElementById('create_btn').disabled = true
+    }
+    else {
+        document.getElementById(`${e.target.id}-error`).innerText = ''
+        // document.getElementById('create_btn').disabled = false
+    }
+})
+
+// validera PhoneNumber
+document.getElementById('phoneNumber').addEventListener('keyup', (e) => {
+    if(e.target.value.length !== 10) {
+        document.getElementById(`${e.target.id}-error`).innerText = 'Ange ett giltigt telfonnr'
         // document.getElementById('create_btn').disabled = true
     }
     else {
